@@ -27,7 +27,8 @@
     const currentDate = new Date();
     const remainingTime = targetDate - currentDate;
 
-    <!-- i will change before time run out. -->
+    <!-- o conhecimento é absoluto.
+         assim como aquele que o tem. -->
 
     if (remainingTime <= 0) {
       document.getElementById("countdown").innerHTML = "Obrigado por esperar!";
@@ -35,6 +36,8 @@
       const hours = Math.floor(remainingTime / (1000 * 60 * 60));
       const minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
+
+    <!-- 1397 -->
 
       document.getElementById("countdown").innerHTML = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
       setTimeout(updateCountdown, 1000);

@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>codigo fonte</title>
-
 <style>
   body {
     margin: 0;
     padding: 0;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
@@ -18,8 +18,9 @@
     font-size: 152px;
     color: white;
   }
- #message {
-    font-size: 14px;
+
+  #message {
+    font-size: 28px;
     font-family: 'Times New Roman', serif;
     color: gray;
     margin-top: 10px;
@@ -28,14 +29,12 @@
 </head>
 <body>
 <div id="countdown"></div>
-<div id="message">Aquele que caminha entre as realidades, através da dimensão dos delirios.<br></div>
+<div id="message">Seu texto aqui</div>
 <script>
   function updateCountdown() {
     const targetDate = new Date("2023-08-10T19:30:00");
     const currentDate = new Date();
     const remainingTime = targetDate - currentDate;
-
-    <!-- o conhecimento é absoluto. assim como aquele que o tem. -->
 
     if (remainingTime <= 0) {
       document.getElementById("countdown").innerHTML = "Obrigado por esperar!";
@@ -43,8 +42,6 @@
       const hours = Math.floor(remainingTime / (1000 * 60 * 60));
       const minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
-
-    <!-- 1397 -->
 
       document.getElementById("countdown").innerHTML = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
       setTimeout(updateCountdown, 1000);

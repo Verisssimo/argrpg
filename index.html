@@ -1,60 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>x</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>:)</title>
-<style>
-  body {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: white;
-    font-family: 'Times New Roman', serif;
-    font-size: 152px;
-    color: black;
-  }
-  #message {
-    font-size: 22px;
-    justify-content: center;
-    font-family: 'Times New Roman', serif;
-    color: black;
-    margin-top: 10px;
-  }
-  
-</style>
+        .contador {
+            font-size: 3em;
+            text-align: center;
+        }
+
+        .titulo {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
-<div id="countdown"></div>
-<div id="message">O Manipulador Atemporal.</div>
-<script>
-  function updateCountdown() {
-    const targetDate = new Date("2023-08-13T20:35:00");
-    const currentDate = new Date();
-    const remainingTime = targetDate - currentDate;
+    <div class="contador">
+        <div class="titulo"></div>
+        <div id="timer"></div>
+    </div>
 
-    if (remainingTime <= 0) {
-      document.getElementById("countdown").innerHTML = "pdrma_rpg2";
-    } else {
-      const hours = Math.floor(remainingTime / (1000 * 60 * 60));
-      const minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
+    <script>
+        // Define o momento final (22h de 08/01/2025)
+        const countdownDate = new Date("Jan 8, 2025 22:00:00").getTime();
 
-      document.getElementById("countdown").innerHTML = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-      setTimeout(updateCountdown, 1000);
-    }
-  }
+        // Atualiza o contador a cada segundo
+        const x = setInterval(function() {
 
-  updateCountdown();
-</script>
+            // Obtém a data e hora atuais
+            const now = new Date().getTime();
+
+            // Calcula a diferença entre a data de término e a data atual
+            const distance = countdownDate - now;
+
+            // Calcula dias, horas, minutos e segundos restantes
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Exibe o resultado no elemento "timer"
+            document.getElementById("timer").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+            // Se a contagem regressiva terminar, exibe uma mensagem
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("timer").innerHTML = "A contagem chegou ao fim!";
+            }
+        }, 1000);
+    </script>
 </body>
-
-<!-- Aguarde. Nomeie-se. Use sua cifra única. -->
-<!-- Boa sorte! -->
-
 </html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contagem Regressiva</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        .contador {
+            font-size: 36px;
+            font-weight: 600;
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .contador span {
+            padding: 10px;
+            background-color: white;
+            color: black;
+            border-radius: 5px;
+        }
+
+        .endereco {
+            color: black;
+            margin-top: 20px;
+            transition: color 0.3s;
+        }
+
+        .contador:hover + .endereco {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>É só o começo! Nós vemos em:</h1>
+
+    <div id="contador" class="contador">
+        <span id="dias">00</span>:
+        <span id="horas">00</span>:
+        <span id="minutos">00</span>:
+        <span id="segundos">00</span>
+    </div>
+
+    <p class="endereco">Av. dos Ajudantes, 11786 - Bairro Centro - São Paulo.</p>
+
+    <script>
+        // Definir a data de destino
+        const destino = new Date("January 15, 2025 18:30:00").getTime();
+
+        // Função para atualizar o contador
+        function atualizarContador() {
+            const agora = new Date().getTime();
+            const distancia = destino - agora;
+
+            // Cálculos de tempo
+            const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
+            const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
+            const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
+
+            // Atualizar os elementos HTML com os valores calculados
+            document.getElementById("dias").textContent = dias.toString().padStart(2, '0');
+            document.getElementById("horas").textContent = horas.toString().padStart(2, '0');
+            document.getElementById("minutos").textContent = minutos.toString().padStart(2, '0');
+            document.getElementById("segundos").textContent = segundos.toString().padStart(2, '0');
+        }
+
+        // Atualizar o contador a cada segundo
+        setInterval(atualizarContador, 1000);
+    </script>
+</body>
+</html>

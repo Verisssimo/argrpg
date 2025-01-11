@@ -28,8 +28,9 @@
         /* A imagem de fundo só aparece quando o mouse passa sobre o contador */
         body.with-image {
             background-image: url('energia.jpg'); /* Substitua 'sua-imagem.jpg' pela URL da sua imagem */
-            background-size: cover;
+            background-size: contain;  /* A imagem será redimensionada para caber na tela sem ser cortada */
             background-position: center;
+            background-repeat: no-repeat; /* Impede que a imagem se repita */;
         }
 
         h1 {

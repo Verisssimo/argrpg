@@ -17,6 +17,22 @@
             height: 100vh;
             margin: 0;
             text-align: center;
+            background-image: url('sua-imagem.jpg'); /* Substitua 'sua-imagem.jpg' pela URL da sua imagem */
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        /* Adiciona um fundo semi-transparente */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8); /* 80% de transparência */
+            z-index: -1;
         }
 
         h1 {
@@ -27,9 +43,6 @@
             font-size: 36px;
             font-weight: 600;
             margin: 20px 0;
-            display: flex;
-            justify-content: center;
-            gap: 10px;
         }
 
         .contador span {
@@ -37,6 +50,7 @@
             background-color: white;
             color: black;
             border-radius: 5px;
+            margin: 0 5px;
         }
 
         .endereco {
@@ -54,10 +68,10 @@
     <h1>É só o começo! Nós vemos em:</h1>
 
     <div id="contador" class="contador">
-        <span id="dias">00</span>:
-        <span id="horas">00</span>:
-        <span id="minutos">00</span>:
-        <span id="segundos">00</span>
+        <span id="dias">00d</span>
+        <span id="horas">00h</span>
+        <span id="minutos">00m</span>
+        <span id="segundos">00s</span>
     </div>
 
     <p class="endereco">Av. dos Ajudantes, 11786 - Bairro Centro - São Paulo.</p>
@@ -78,10 +92,10 @@
             const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
 
             // Atualizar os elementos HTML com os valores calculados
-            document.getElementById("dias").textContent = dias.toString().padStart(2, '0');
-            document.getElementById("horas").textContent = horas.toString().padStart(2, '0');
-            document.getElementById("minutos").textContent = minutos.toString().padStart(2, '0');
-            document.getElementById("segundos").textContent = segundos.toString().padStart(2, '0');
+            document.getElementById("dias").textContent = dias.toString().padStart(2, '0') + "d";
+            document.getElementById("horas").textContent = horas.toString().padStart(2, '0') + "h";
+            document.getElementById("minutos").textContent = minutos.toString().padStart(2, '0') + "m";
+            document.getElementById("segundos").textContent = segundos.toString().padStart(2, '0') + "s";
         }
 
         // Atualizar o contador a cada segundo

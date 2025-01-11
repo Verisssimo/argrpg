@@ -17,22 +17,19 @@
             height: 100vh;
             margin: 0;
             text-align: center;
-            background-image: url('energia.jpg'); /* Substitua 'sua-imagem.jpg' pela URL da sua imagem */
-            background-size: cover;
-            background-position: center;
             position: relative;
         }
 
-        /* Adiciona um fundo semi-transparente */
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8); /* 80% de transparência */
-            z-index: -1;
+        /* Fundo do corpo sem a imagem, sem a transparência */
+        body.no-image {
+            background-color: black;
+        }
+
+        /* A imagem de fundo só aparece quando o mouse passa sobre o contador */
+        body.with-image {
+            background-image: url('sua-imagem.jpg'); /* Substitua 'sua-imagem.jpg' pela URL da sua imagem */
+            background-size: cover;
+            background-position: center;
         }
 
         h1 {
@@ -43,14 +40,17 @@
             font-size: 36px;
             font-weight: 600;
             margin: 20px 0;
-        }
-
-        .contador span {
+            display: inline-block;
             padding: 10px;
             background-color: white;
             color: black;
             border-radius: 5px;
-            margin: 0 5px;
+            cursor: pointer;
+        }
+
+        .contador:hover {
+            transition: background-color 0.3s ease;
+            background-color: #f0f0f0;
         }
 
         .endereco {
@@ -64,7 +64,7 @@
         }
     </style>
 </head>
-<body>
+<body class="no-image">
     <h1>É só o começo! Nós vemos em:</h1>
 
     <div id="contador" class="contador">
@@ -100,6 +100,19 @@
 
         // Atualizar o contador a cada segundo
         setInterval(atualizarContador, 1000);
+
+        // Quando o mouse passar sobre o contador, mostrar a imagem de fundo
+        const contador = document.getElementById("contador");
+        contador.addEventListener("mouseenter", () => {
+            document.body.classList.remove("no-image");
+            document.body.classList.add("with-image");
+        });
+
+        // Quando o mouse sair do contador, esconder a imagem de fundo
+        contador.addEventListener("mouseleave", () => {
+            document.body.classList.remove("with-image");
+            document.body.classList.add("no-image");
+        });
     </script>
 </body>
 </html>

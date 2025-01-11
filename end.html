@@ -25,12 +25,25 @@
             background-color: black;
         }
 
-        /* A imagem de fundo só aparece quando o mouse passa sobre o contador */
+        /* A imagem de fundo com transparência só aparece quando o mouse passa sobre o contador */
         body.with-image {
             background-image: url('energia.jpg'); /* Substitua 'sua-imagem.jpg' pela URL da sua imagem */
             background-size: contain;  /* A imagem será redimensionada para caber na tela sem ser cortada */
             background-position: center;
-            background-repeat: no-repeat; /* Impede que a imagem se repita */;
+            background-repeat: no-repeat; /* Impede que a imagem se repita */
+            position: relative;
+        }
+
+        /* Criar a camada com transparência sobre a imagem */
+        body.with-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* 50% de transparência */
+            z-index: -1; /* Coloca a camada atrás do conteúdo */
         }
 
         h1 {

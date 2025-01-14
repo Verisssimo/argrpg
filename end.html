@@ -18,21 +18,24 @@
             margin: 0;
             text-align: center;
             position: relative;
+            transition: background-color 0.3s ease, opacity 1s ease;
+            opacity: 0;
         }
 
-        /* Fundo do corpo sem a imagem, sem a transparência */
+        /* Fundo do corpo sem a imagem */
         body.no-image {
             background-color: black;
+            opacity: 0;
         }
 
         /* A imagem de fundo com transparência só aparece quando o mouse passa sobre o contador */
         body.with-image {
-            background-image: url('energia.jpg'); /* Substitua 'sua-imagem.jpg' pela URL da sua imagem */
-            background-size: contain;  /* A imagem será redimensionada para caber na tela sem ser cortada */
+            background-image: url('energia.jpg');
+            background-size: contain;
             background-position: center;
-            background-repeat: no-repeat; /* Impede que a imagem se repita */
+            background-repeat: no-repeat;
             position: relative;
-            transition: opacity 0.9s;
+            opacity: 1;
         }
 
         /* Criar a camada com transparência sobre a imagem */
@@ -43,8 +46,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.8); /* 50% de transparência */
-            z-index: -1; /* Coloca a camada atrás do conteúdo */
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: -1;
         }
 
         h1 {
@@ -78,10 +81,30 @@
         .contador:hover + .endereco {
             color: purple;
         }
+
+        /* Estilo do "Ele" dentro do h1 */
+        #ele {
+            color: inherit; /* Mantém a cor padrão */
+            animation: blink 1s infinite; /* Animação de piscar */
+        }
+
+        /* Animação de piscar */
+        @keyframes blink {
+            0% {
+                color: inherit;
+            }
+            50% {
+                color: purple; /* Cor roxa no meio do ciclo */
+            }
+            100% {
+                color: inherit;
+            }
+        }
+
     </style>
 </head>
 <body class="no-image">
-    <h1>É só o começo! Ele retornará em:</h1>
+    <h1>É só o começo! <span id="ele">Ele</span> retornará em:</h1>
 
     <div id="contador" class="contador">
         <span id="dias">00d</span>

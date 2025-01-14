@@ -86,6 +86,7 @@
         #ele {
             color: inherit;
             animation: blink 1s infinite; /* Animação de piscar */
+            position: relative;
         }
 
         /* Animação de piscar */
@@ -101,10 +102,26 @@
             }
         }
 
+        /* Estilo para o "Kay" piscando rapidamente sobre o "Ele" */
+        #kay {
+            position: absolute;
+            visibility: hidden;
+            animation: blinkKay 1s infinite; /* Animação para o "Kay" aparecer rapidamente */
+        }
+
+        /* Animação de "Kay" aparecendo rapidamente */
+        @keyframes blinkKay {
+            0%, 100% {
+                visibility: hidden;
+            }
+            50% {
+                visibility: visible; /* "Kay" aparece no meio do ciclo */
+            }
+        }
     </style>
 </head>
 <body class="no-image">
-    <h1>É só o começo! <span id="ele">Ele</span> retornará em:</h1>
+    <h1>É só o começo! <span id="ele">Ele</span><span id="kay">Kay</span> retornará em:</h1>
 
     <div id="contador" class="contador">
         <span id="dias">00d</span>
@@ -152,19 +169,6 @@
             document.body.classList.remove("with-image");
             document.body.classList.add("no-image");
         });
-
-        // Trocar o texto entre "Ele" e "Kay" a cada 2 segundos
-        const eleText = document.getElementById('ele');
-        let isEle = true;
-
-        setInterval(() => {
-            if (isEle) {
-                eleText.textContent = "Kay";
-            } else {
-                eleText.textContent = "Ele";
-            }
-            isEle = !isEle;
-        }, 100); // Alterna a cada 2 segundos
     </script>
 </body>
 </html>

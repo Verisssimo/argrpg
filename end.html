@@ -18,7 +18,7 @@
             margin: 0;
             text-align: center;
             position: relative;
-            transition: background-color 0.3s ease, opacity 0.3s ease;
+            transition: background-color 0.3s ease, opacity 1s ease;
             opacity: 0;
         }
 
@@ -85,7 +85,7 @@
         /* Estilo do "Ele" dentro do h1 */
         #ele {
             color: inherit;
-            animation: blink 0.1s infinite, changeText 1s infinite; /* Animações de piscar e troca de texto */
+            animation: blink 1s infinite; /* Animação de piscar */
         }
 
         /* Animação de piscar */
@@ -98,16 +98,6 @@
             }
             100% {
                 color: inherit;
-            }
-        }
-
-        /* Animação de troca de texto */
-        @keyframes changeText {
-            0%, 100% {
-                content: "Ele";
-            }
-            50% {
-                content: "Kay"; /* Altera para "Kay" na metade da animação */
             }
         }
 
@@ -162,6 +152,19 @@
             document.body.classList.remove("with-image");
             document.body.classList.add("no-image");
         });
+
+        // Trocar o texto entre "Ele" e "Kay" a cada 2 segundos
+        const eleText = document.getElementById('ele');
+        let isEle = true;
+
+        setInterval(() => {
+            if (isEle) {
+                eleText.textContent = "Kay";
+            } else {
+                eleText.textContent = "Ele";
+            }
+            isEle = !isEle;
+        }, 1000); // Alterna a cada 2 segundos
     </script>
 </body>
 </html>

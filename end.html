@@ -18,7 +18,7 @@
             margin: 0;
             text-align: center;
             position: relative;
-            transition: background-color 0.3s ease, opacity 1s ease;
+            transition: background-color 0.3s ease, opacity 0.3s ease;
             opacity: 0;
         }
 
@@ -84,22 +84,27 @@
 
         /* Estilo do "Ele" dentro do h1 */
         #ele {
-            position: relative;
-            opacity: 1;
-            transition: opacity 0.2s ease-in-out; /* Fade out rápido */
+            color: inherit; /* Mantém a cor padrão */
+            animation: blink 0.1s infinite; /* Animação de piscar */
         }
 
-        /* Estilo do "Kay" dentro do h1 */
-        #kay {
-            position: absolute;
-            opacity: 0;
-            transition: opacity 0.2s ease-in-out; /* Fade in rápido */
+        /* Animação de piscar */
+        @keyframes blink {
+            0% {
+                color: inherit;
+            }
+            50% {
+                color: purple; /* Cor roxa no meio do ciclo */
+            }
+            100% {
+                color: inherit;
+            }
         }
 
     </style>
 </head>
 <body class="no-image">
-    <h1>É só o começo! <span id="ele">Ele</span><span id="kay">Kay</span> retornará em:</h1>
+    <h1>É só o começo! <span id="ele">Ele</span> retornará em:</h1>
 
     <div id="contador" class="contador">
         <span id="dias">00d</span>
@@ -147,26 +152,6 @@
             document.body.classList.remove("with-image");
             document.body.classList.add("no-image");
         });
-
-        // Função para alternar o texto com fade out/in
-        setInterval(() => {
-            const ele = document.getElementById("ele");
-            const kay = document.getElementById("kay");
-
-            // Fade out do "Ele"
-            ele.style.opacity = 0;
-
-            // Após 0.2 segundos (fade out do "Ele"), faz o "Kay" aparecer
-            setTimeout(() => {
-                kay.style.opacity = 1;
-            }, 200); // Tempo do fade out
-
-            // Após 0.2 segundos de "Kay" visível, o "Ele" volta
-            setTimeout(() => {
-                kay.style.opacity = 0;  // Fade out do "Kay"
-                ele.style.opacity = 1;  // Fade in do "Ele"
-            }, 2000); // "Kay" visível por 1.8 segundos (total de 3 segundos)
-        }, 3000); // Esse ciclo ocorre a cada 3 segundos
     </script>
 </body>
 </html>

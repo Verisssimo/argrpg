@@ -84,8 +84,8 @@
 
         /* Estilo do "Ele" dentro do h1 */
         #ele {
-            color: inherit; /* Mantém a cor padrão */
-            animation: blink 0.1s infinite; /* Animação de piscar */
+            color: inherit;
+            animation: blink 0.3s infinite, changeText 0.1s infinite; /* Animações de piscar e troca de texto */
         }
 
         /* Animação de piscar */
@@ -98,6 +98,16 @@
             }
             100% {
                 color: inherit;
+            }
+        }
+
+        /* Animação de troca de texto */
+        @keyframes changeText {
+            0%, 100% {
+                content: "Ele";
+            }
+            50% {
+                content: "Kay"; /* Altera para "Kay" na metade da animação */
             }
         }
 
